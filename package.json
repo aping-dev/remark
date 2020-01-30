@@ -1,0 +1,39 @@
+{
+  "name": "remark",
+  "version": "0.1.2",
+  "description": "remark",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next build client",
+    "build:client": "rm -rf client/.next && next build client && cp -r client/.next dist/client/ && cp -r client/static dist/client/",
+    "build:server": "webpack",
+    "start": "node server | bunyan",
+    "migrate:latest": "knex migrate:latest --env=production --knexfile server/database/knexfile.js",
+    "migrate:rollback": "knex migrate:rollback --env=production --knexfile server/database/knexfile.js",
+    "migrate:up": "knex migrate:up --env=production --knexfile server/database/knexfile.js",
+    "migrate:down": "knex migrate:down --env=production --knexfile server/database/knexfile.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "bunyan": "^1.8.12",
+    "bunyan-rotating-file-stream": "^1.6.3",
+    "express": "^4.17.1",
+    "knex": "^0.17.6",
+    "next": "^9.0.2",
+    "objection": "^1.6.9",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0",
+    "sqlite3": "^4.0.9",
+    "uuid": "^3.3.2",
+    "yaml": "^1.6.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.5",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
